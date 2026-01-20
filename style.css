@@ -1,0 +1,90 @@
+/* LED Dot Animations */
+.led-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.led-blue {
+    background-color: #3b82f6;
+    box-shadow: 0 0 10px #3b82f6;
+    animation-delay: 0s;
+}
+
+.led-green {
+    background-color: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    animation-delay: 0.3s;
+}
+
+.led-slate {
+    background-color: #94a3b8;
+    box-shadow: 0 0 10px #94a3b8;
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-8px);
+        opacity: 0.6;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Agent response cards */
+.agent-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(51, 65, 85, 0.6) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.agent-card:hover {
+    border-color: rgba(148, 163, 184, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading animation for orchestrating state */
+.orchestrating {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
