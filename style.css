@@ -88,3 +88,119 @@ html {
         opacity: 0.5;
     }
 }
+
+/* Modal animations */
+#configModal {
+    animation: fadeIn 0.2s ease-out;
+}
+
+#configModal > div {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Response content styling */
+.response-content {
+    line-height: 1.6;
+}
+
+.response-content p {
+    margin-bottom: 0.75rem;
+}
+
+.response-content strong {
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
+.response-content em {
+    color: #cbd5e1;
+    font-style: italic;
+}
+
+.response-content code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+/* Loading spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Smooth transitions for cards */
+.agent-card {
+    animation: cardSlideIn 0.4s ease-out;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Settings button hover effect */
+#settingsBtn:hover svg {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+#settingsBtn svg {
+    transition: transform 0.3s ease;
+}
+
+/* Input focus effects */
+input:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Better link styling */
+a {
+    transition: color 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .agent-card {
+        padding: 16px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

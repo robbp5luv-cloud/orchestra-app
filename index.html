@@ -11,22 +11,29 @@
 
     <!-- Sticky Header -->
     <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-700 shadow-lg">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-6 py-4 relative">
+            <button id="settingsBtn" class="absolute left-6 top-1/2 -translate-y-1/2 p-2 hover:bg-slate-800 rounded-lg transition-colors" title="Configure API Keys">
+                <svg class="w-6 h-6 text-slate-400 hover:text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+            </button>
             <h1 class="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 🔒 The Vault: Multi-Agent Orchestrator
             </h1>
+            <p class="text-center text-xs text-slate-500 mt-1">Silicon Valley's #1 Multi-LLM Interface</p>
             <div class="flex justify-center gap-6 mt-2 text-sm text-slate-400">
                 <span class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                    Claude 4.5
+                    Groq Llama 3.1
                 </span>
                 <span class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                    Gemini 1.5 Pro
+                    DeepSeek V3
                 </span>
                 <span class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-                    Grok 4.1
+                    Mistral AI
                 </span>
             </div>
         </div>
@@ -78,6 +85,94 @@
         </div>
     </div>
 
+    <!-- Configuration Modal -->
+    <div id="configModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-700">
+            <div class="sticky top-0 bg-slate-800 border-b border-slate-700 p-6 flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-white">⚙️ API Configuration</h2>
+                <button id="closeModal" class="p-2 hover:bg-slate-700 rounded-lg transition-colors">
+                    <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                    <p class="text-sm text-blue-300">
+                        <strong>🎉 Get Started:</strong> Add your free API keys below to unlock real AI responses from multiple LLMs simultaneously!
+                    </p>
+                </div>
+
+                <!-- Groq API Configuration -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+                        <h3 class="text-lg font-semibold text-blue-400">Groq (Llama 3.1 70B)</h3>
+                    </div>
+                    <input
+                        type="password"
+                        id="groqApiKey"
+                        placeholder="Enter Groq API Key"
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-slate-500"
+                    >
+                    <a href="https://console.groq.com/keys" target="_blank" class="text-sm text-blue-400 hover:text-blue-300 inline-flex items-center gap-1">
+                        Get free API key →
+                    </a>
+                    <p class="text-xs text-slate-500">Fast inference, 14,400 free requests/day</p>
+                </div>
+
+                <!-- DeepSeek API Configuration -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        <h3 class="text-lg font-semibold text-green-400">DeepSeek V3</h3>
+                    </div>
+                    <input
+                        type="password"
+                        id="deepseekApiKey"
+                        placeholder="Enter DeepSeek API Key"
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white placeholder-slate-500"
+                    >
+                    <a href="https://platform.deepseek.com/api_keys" target="_blank" class="text-sm text-green-400 hover:text-green-300 inline-flex items-center gap-1">
+                        Get free API key →
+                    </a>
+                    <p class="text-xs text-slate-500">Free tier available, powerful reasoning model</p>
+                </div>
+
+                <!-- Mistral API Configuration -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-slate-400"></span>
+                        <h3 class="text-lg font-semibold text-slate-300">Mistral AI</h3>
+                    </div>
+                    <input
+                        type="password"
+                        id="mistralApiKey"
+                        placeholder="Enter Mistral API Key"
+                        class="w-full px-4 py-3 bg-slate-900 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500 text-white placeholder-slate-500"
+                    >
+                    <a href="https://console.mistral.ai/api-keys/" target="_blank" class="text-sm text-slate-400 hover:text-slate-300 inline-flex items-center gap-1">
+                        Get free API key →
+                    </a>
+                    <p class="text-xs text-slate-500">Free trial credits, efficient models</p>
+                </div>
+
+                <div class="pt-4 border-t border-slate-700">
+                    <button
+                        id="saveConfig"
+                        class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95"
+                    >
+                        Save Configuration
+                    </button>
+                    <p class="text-xs text-slate-500 text-center mt-3">
+                        API keys are stored locally in your browser
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
